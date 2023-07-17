@@ -5822,14 +5822,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001286":
-  version: 1.0.30001393
-  resolution: "caniuse-lite@npm:1.0.30001393"
-  checksum: 72b7cd81c51f41965f2fbdbb20729d71f2bd5e376d9b4effa22616dd2707640b8676862e8db3db83b76c3bcf2aaefc9ebd5991a10eeb483b460322de5548b98e
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001503":
+"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001286, caniuse-lite@npm:^1.0.30001503":
   version: 1.0.30001516
   resolution: "caniuse-lite@npm:1.0.30001516"
   checksum: 044adf3493b734a356a2922445a30095a0f6de6b9194695cdf74deafe7bef658e85858a31177762c2813f6e1ed2722d832d59eee0ecb2151e93a611ee18cb21f
@@ -14933,6 +14926,7 @@ __metadata:
     prettier-config-standard: ^5.0.0
     react: ^18.2.0
     react-dom: ^18.2.0
+    script-ext-html-webpack-plugin: ^2.1.5
     style-loader: ^3.3.3
     stylelint: ^14.16.1
     stylelint-config-prettier: ^9.0.5
@@ -19122,7 +19116,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"script-ext-html-webpack-plugin@npm:^2.1.4":
+"script-ext-html-webpack-plugin@npm:^2.1.4, script-ext-html-webpack-plugin@npm:^2.1.5":
   version: 2.1.5
   resolution: "script-ext-html-webpack-plugin@npm:2.1.5"
   dependencies:
