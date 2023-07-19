@@ -83,10 +83,12 @@ const configure = (prod) => ({
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
     }),
-    new CopyWebpackPlugin([
-      { from: 'src/data', to: 'data' },
-      { from: 'src/images', to: 'images' }
-    ]),
+    new CopyWebpackPlugin(
+    {
+      patterns: [
+        { from: 'src/data', to: 'data' },
+        { from: 'src/images', to: 'images' }
+    ]}),
     new webpack.HashedModuleIdsPlugin()
   ],
   optimization: {
