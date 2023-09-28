@@ -9,7 +9,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const version = require('./tools/version');
 
-const configure = (prod) => ({
+// lib
+const packageJson = require('./package.json');
+
+const configureDemo = (prod) => ({
+  name: "demo",
   entry: {
     demo: './demo/scripts/index.js',
   },
@@ -135,4 +139,61 @@ const configure = (prod) => ({
   },
 });
 
-module.exports = (env, argv) => configure(argv.mode === 'production');
+const configureLib = (prod) => (
+{
+  name: "lib",
+  mode: 'production', 
+  entry: './src/index.js',
+  output: {
+    filename: `build/${packageJson.main}`,
+    path: path.resolve(__dirname),
+    library: 'Miew',
+    libraryTarget: 'umd',
+    globalObject: 'this',
+  },
+  devtool: 'source-map',
+  externals: {
+    three: 'THREE',
+    lodash: '_',
+  },
+  resolve: {
+    modules: [path.resolve(__dirname, 'node_modules')],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(vert|frag)$/,
+        use: 'raw-loader',
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-transform-runtime'],
+          },
+        },
+      },
+    ],
+  },
+  plugins: []//,
+  // optimization: {
+    // minimizer: [
+      // new TerserPlugin({
+        // sourceMap: true,
+        // terserOptions: {
+          // output: {
+            // comments: /^!/,
+          // },
+        // },
+      // }),
+    // ],
+  // },
+});
+
+module.exports = [
+(env, argv) => configureDemo(argv.mode === 'production'),
+(env, argv) => configureLib(argv.mode === 'production')
+]
